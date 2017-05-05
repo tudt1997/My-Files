@@ -7,10 +7,11 @@ using namespace std;
 struct node{
 	int info;
 	struct node *next;
-}*start;
+};
 class single_list {
+	node *start;
 	public :
-		void newsingle_list(){
+		single_list() {
 			start = NULL;
 		}
 		struct node *createnode(int value){
@@ -53,24 +54,23 @@ class single_list {
             }
 		}
 		void display(){
-			struct node*temp;
+			struct node *temp;
 			if (start == NULL){
 				cout << "Noi dung danh sach rong" << endl;
 				return;
 			}
 			temp = start;
-			while (temp->next != NULL){
+			while (temp != NULL){
 				cout << temp->info << "   "; 
 				temp = temp->next;
 			}
 			cout << endl;
 		}
 };
-int n;
-void check(string s,single_list T){
+void check(string s,single_list &T){
 	int a;
 	for (int i=0;i<s.size();i++){
-		if ( s[i] != ' '){
+		if (s[i] != ' '){
 			a = s[i] - '0';
 			T.insertlast(a);
 		}
@@ -78,10 +78,11 @@ void check(string s,single_list T){
 }
 void init(){
 	ifstream fd ("dske11.txt");
-	single_list *T;
 	string s;
+	int n;
 	int i=0;
 	fd >> n;
+	single_list *T = new single_list[n];
 	fd.ignore();
     for(int i=0;i<n;i++){
 		getline(fd,s); 
@@ -90,5 +91,5 @@ void init(){
 	}
 }
 int main(){
-     init();
+    init();
 }
