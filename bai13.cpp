@@ -70,26 +70,27 @@ class list{
 			}
 		}
 		int deletepos(int a){
-			nodel *temp,*s,*t;
+			nodel *temp,*s,*t,*prev;
 			if (start == NULL){
 				return 0;
 			}else{
 				s = start;
 				if(s->info == a){
 					start = start->next;
+					delete(s);
 					return 1;
 				}
 				while(s->next!=NULL){
-					temp = s->next;
-					if (s->info == a){
-						s = temp;
-						delete(temp);
-						break;
-					}
+					prev = s;
 					s = s->next;
-					return 1;
+					if (s->info == a){
+						prev->next = s->next;
+						delete(s);
+						return 1;
+					}
 				}
 			}
+			return 0;
 		}
 };
 class stacklist{
@@ -157,10 +158,12 @@ void path(list *T,int u,int n){
 //	A.deletepos(2);
 //	A.display();
     nodel *a=A.start;
-while (a != NULL){
-    cout <<	A.deletepos(2);
-    a = a->next;
-}
+	while (1){
+		if (A.deletepos(2))
+	    	cout <<	1 << endl;
+	    else
+	    	break;
+	}
 //	stacklist s;
 //	int a,k=0;
 //	int *CE = new int[n];
