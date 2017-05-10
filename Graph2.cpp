@@ -248,7 +248,7 @@ void Graph::readFile2 (const char* name) {
 
 int main() {
     Graph g(9);
-    g.readFile2("g2.txt");
+    g.readFile2("graph2.txt");
     cout << "List of edges: \n";
     g.print();
     //g.kruskal();
